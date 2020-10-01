@@ -1,0 +1,9 @@
+Matéria: Eletrônica para Computação - SSC180 
+Professor: Eduardo Simões 
+simoes@icmc.usp.br 
+Aulas: Terça (10:00)
+GitLab: https://gitlab.com/simoesusp/disciplinas/-/tree/master/SSC0180-Eletronica-para-Computacao
+
+Avisos: Ele não costuma responder email, entrar em contato através do telefone: (16)997707506. 
+Link GitHub: https://github.com/login
+Link Apresentação do Trabalho: https://meet.google.com/kgh-tgbd-ors

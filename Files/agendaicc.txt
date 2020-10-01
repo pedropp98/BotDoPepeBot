@@ -1,0 +1,26 @@
+02 a 04/09 \- Introdução a análise de algoritmos \(apenas aulas gravadas\)
+10/09 \- Busca e contagem de operações
+14/09 \- Busca e ordenação com contagem de operações e comparação
+17/09 \- Ordenação com divisão e conquista
+21/09 \- Análise do algoritmo mergesort com equação de recorrência
+24/09 \- Análise comparativa entre algoritmos de ordenação
+SEMCOMP
+05/10 \- Prática de análise de recorrências e algoritmos
+08/10 \- Avaliaçao do Módulo 1
+15/10 \- Notação assintótica
+22/10 \- Análise de algoritmos: da contagem à analise de complexidade
+26/10 \- Quicksort parte 1
+29/10 \- Quicksort parte 2
+05/11 \- Heapsort
+09/11 \- Avaliaçao do Módulo 2
+12/11 \- Limite inferior para ordenação baseada em comparação e Counting sort
+16/11 \- Counting sort com registros e Bucketsort
+19/11 \- Análise e implementação do counting sort e bucket sort
+23/11 \- Radixsort
+26/11 \- Avaliaçao do Módulo 3
+30/11 \- Busca indexada e interpolada
+03/12 \- Hashing \- introdução
+07/12 \- Hashing \- sondagem quadrática e por multiplicação
+10/12 \- Hashing \- duplo e universal
+14/12 \- Avaliaçao do Módulo 4
+17/12 \- Encontro final da disciplina

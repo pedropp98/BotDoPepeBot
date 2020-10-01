@@ -1,0 +1,17 @@
+28/08 Apresentação, Revisão ICC1
+04/09 Busca Sequencial e Binária
+11/09 Ordenação Quadrática \(Bubble e Selection\)
+18/09 Ordenação Quadrática \(Insertion e Cocktail\)
+25/09 Ordenação Divisão e Conquista \(Mergesort\)
+02/10 SEMCOMP
+09/10 Análise assintótica
+16/10 Ordenação log\-linear \(heapsort\)
+23/10 Ordenação log\-linear \(quicksort\)
+30/10 Limite inferior
+06/11 Ordenação Linear com Memória Auxiliar \(Counting Sort\)
+13/11 Ordenação Linear com Memória Auxiliar \(Bucket Sort, Radix Sort\)
+20/11 Melhorar Busca Sequencial e Binária com Indexação e Interpolação
+27/11 Heap para filas de Prioridade
+04/12 Hashing
+11/12 Hashing 2
+18/12 Livre
