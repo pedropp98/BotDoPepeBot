@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# Directories
+Ignore/
+
+# Friendly API's
+cotacao.py
+dontpad.py
+
 # Distribution / packaging
 .Python
 build/
@@ -127,3 +134,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Requirements
+requirements.txt
+runtime.txt
+Procfile
