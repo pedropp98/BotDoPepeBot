@@ -9,8 +9,6 @@ import dontpad
 from cotacao import DolarToFloat
 import random
 import os
-
-import flask_server
  
 from helpers import loadFile
 from dotenv import load_dotenv
