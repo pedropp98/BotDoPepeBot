@@ -1,0 +1,7 @@
+grupo_teste = [876005334]
+mat_discreta = []
+icc = []
+fisica = []
+algoritmos = []
+grupos_sala = []
+grupos_permitidos = [grupo_teste[0]]
