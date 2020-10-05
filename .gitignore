@@ -3,36 +3,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
-
 # Directories
 Ignore/
 
 # Friendly API's
 cotacao.py
+!handlers/cotacao.py
 dontpad.py
 
 # Distribution / packaging
 .Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -139,6 +121,8 @@ dmypy.json
 .pyre/
 
 # Requirements
-requirements.txt
 runtime.txt
 Procfile
+
+# VS Code
+.vscode/

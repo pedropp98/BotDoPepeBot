@@ -8,6 +8,19 @@ import random
 import dontpad
 from cotacao import DolarToFloat
 import random
+
+import os
+ 
+from helpers import loadFile
+from dotenv import load_dotenv
+from handlers import *
+from globais import *
+
+
+
+#version 6.4.1
+
+
 import medias
 
 #version 6.4.1
@@ -239,20 +252,28 @@ def mediasNotas(update, context):
 def teste(update, context):
     print(update.message.chat_id)
 
+
 def main():
+    TOKEN = os.getenv("TELEGRAM_TOKEN")
+
     logger = logging.getLogger(__name__)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
     updater = Updater(token=TOKEN, use_context=True)
     dp = updater.dispatcher
     
-    '''dp.add_handler(CommandHandler('start', start))'''
-    #Comandos que dependem da funcao materias
-    comandos = ['icc', 'labicc', 'algoritmos', 'fisica', 'humanidades', 'mat', 
-                'calc', 'sistemas', 'praticasd', 'pesquisa', 'agendasd', 
-                'agendalabicc', 'agendaicc']
-    dp.add_handler(CommandHandler(comandos, materias))
+    # dp.add_handler(commandStart)
     
+
+    dp.add_handler(comandoMaterias)
+    # Comandos que nao dependem da funcao materias
+    dp.add_handler(comandoProvas)
+    dp.add_handler(comandoProbability)
+    dp.add_handler(comandoDoggos)
+    dp.add_handler(comandoCotacao)
+    dp.add_handler(comandoReps)
+    dp.add_handler(comandoTeste)
+
     #Comandos que nao dependem da funcao materias
     dp.add_handler(CommandHandler('provas', provas))
     dp.add_handler(CommandHandler('doggos', doggos))
@@ -260,18 +281,14 @@ def main():
     dp.add_handler(CommandHandler('cotacao', cotacao))
     dp.add_handler(CommandHandler('probability', probability))
     dp.add_handler(CommandHandler('reps', reps))
+    
+
     dp.add_handler(CommandHandler('media', mediaNotas))
-
-    #Comando pra eu pegar info sobre grupos
-    dp.add_handler(CommandHandler('teste', teste))    
-    
     updater.start_polling(clean=True)
-
     logging.info("=== Bot running! ===")
-    
     updater.idle()
     
 if __name__ == "__main__":
-    
+    load_dotenv()
     main()
     logging.info("=== Bot shutting down! ===")
