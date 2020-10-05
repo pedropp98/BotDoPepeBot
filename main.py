@@ -8,6 +8,7 @@ import random
 import dontpad
 from cotacao import DolarToFloat
 import random
+import medias
 
 #version 6.4.1
 
@@ -28,6 +29,7 @@ def loadFile(nomeArquivo):
 
 TOKEN = loadFile("Ignore/token.txt")
 IDS = loadFile("Ignore/Groups.txt").split()
+IDS = loadFile(".vscode/settings.json").split()
 grupo_teste = [int(IDS[0])]
 mat_discreta = [int(IDS[1])]
 icc = [int(IDS[2])]
@@ -159,6 +161,81 @@ def reps(update, context):
         men = "Desculpe, esse grupo não é permitido para esse comando."
     context.bot.sendMessage(chat_id = chatId, text = men, reply_to_message_id = messageId)
 
+
+padrao = '''
+> Média Aritmética: aritmetica nota[1] nota[2] ...
+> Média Ponderada: ponderada nota[1] peso[1] nota[2] peso[2] ...
+> Média Geométrica: geometrica nota[1] nota[2] ...
+> Média Harmônica: harmonica nota[1] nota [2] ...
+'''
+
+def mediasNotas(update, context):
+    texto = context.args
+    chatId = update.message.chat_id
+    messageId = update.message.message_id
+
+    for i in range(len(texto)):
+        if ',' in texto[i]:
+            texto[i] = texto[i].replace(',', '.')
+    
+    if len(texto) == 0: 
+        msg = f"Opa, tenta de novo, mas mandado no formato certo. Lembrando:{padrao}"
+        context.bot.sendMessage(chat_id = chatId, text = msg, reply_to_message_id = messageId)
+        return
+
+    username = update.message.from_user.username
+    arroba = f"@{username}"
+    media = 0
+    calculou = False
+    lista_tipos = [ "aritmetica", "ponderada", "geometrica", "harmonica"]
+    msg = ""
+    
+    if texto == []:
+        msg = f'''{arroba}, indique o tipo de média desejada com o seguinte formato:
+        {padrao}
+        '''
+    elif texto[0] not in lista_tipos:
+        msg = f'''{arroba}, indique o tipo de média desejada com o seguinte formato:
+        {padrao}
+        '''
+    elif len(texto) < 3:
+        msg = f"{arroba}, faz na mão ai po"
+    else:
+        if texto[0] == lista_tipos[0]:
+            media = mediaAritmetica(texto[1:])
+            calculou = True
+        elif texto[0] == lista_tipos[1]:
+            if len(texto[1:]) % 2 is not 0:
+                msg = f"{arroba}, tem que falar a nota e peso dela mano..."
+            else:
+                notas = list()
+                pesos = list()
+                for i in range(len(texto[1:])):
+                    if i % 2 == 0: notas.append(float(texto[i + 1]))
+                    else: pesos.append(float(texto[i + 1]))
+                media = mediaPonderada(notas, pesos)
+                calculou = True
+        elif texto[0] == lista_tipos[2]:
+            media = mediaGeometrica(texto[1:])
+            calculou = True
+        elif texto[0] == lista_tipos[3]:
+            media = mediaHarmonica(texto[1:])
+            calculou = True
+    
+    if calculou:
+        if media < 5:
+            msg = f"Ixi, ta meio tenso a situação, {arroba}! Sua média e {media:.2f}."
+        
+        elif media == 5:
+            msg = f"No limite em compatriota {arroba}! Sua média é {media:.2f}."
+        
+        elif media > 5 and media < 10:
+            msg = f"Boa campeão, ta aprovado! {arroba}, sua média é {media:.2f}."
+        else:
+            msg = f"{arroba}, voando bem alto, deve ser o @RussoFSan! Sua média é {media:.2f}."
+    
+    context.bot.sendMessage(chat_id = chatId, text = msg, reply_to_message_id = messageId)
+
 def teste(update, context):
     print(update.message.chat_id)
 
@@ -183,6 +260,7 @@ def main():
     dp.add_handler(CommandHandler('cotacao', cotacao))
     dp.add_handler(CommandHandler('probability', probability))
     dp.add_handler(CommandHandler('reps', reps))
+    dp.add_handler(CommandHandler('media', mediaNotas))
 
     #Comando pra eu pegar info sobre grupos
     dp.add_handler(CommandHandler('teste', teste))    
